@@ -2,18 +2,47 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %} Frikili {% endblock %}</title>
         {# Run `composer require symfony/webpack-encore-bundle`
            and uncomment the following Encore helpers to start using Symfony UX #}
         {% block stylesheets %}
             {#{{ encore_entry_link_tags('app') }}#}
+            <link rel="stylesheet" href="{{ asset("css/bootstrap.min.css") }}">
+            <link rel="stylesheet" href="{{ asset("css/all.css") }}">
+            <link rel="stylesheet" href="{{ asset("css/stylesheet.css") }}">
         {% endblock %}
 
-        {% block javascripts %}
-            {#{{ encore_entry_script_tags('app') }}#}
-        {% endblock %}
+
     </head>
     <body>
-        {% block body %}{% endblock %}
+        {% block body %}
+            <nav class="navbar navbar-expand-lg navbar-light ">
+                <a class="navbar-brand" href={{ path("dashboard") }}>Frikili</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href={{ path("RegistrarPosts") }}>Crear post</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href={{ path("MisPosts") }}>Mis posts</a>
+                        </li>
+                    </ul>
+                    <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                </div>
+            </nav>
+        {% endblock %}
+        {% block javascripts %}
+            {#{{ encore_entry_script_tags('app') }}#}
+            <script src={{ asset("js/all.js") }}></script>
+            <script src={{ asset("js/bootstrap.min.js") }}></script>
+            <script src={{ asset("js/jquery.min.js") }}></script>
+        {% endblock %}
     </body>
 </html>

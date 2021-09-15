@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Post!{% endblock %}
+
+{% block body %}
+    <style>
+        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    </style>
+    {{  parent() }}
+
+    <div class="example-wrapper">
+
+        <div class="container bg-white rounded my-3 p-4">
+            <div class="d-flex bd-highlight">
+                <div class="p-2 flex-grow-1 bd-highlight">
+                    <h3>{{ post.titulo }}</h3>
+                    <div class="my-3" style="color:#3282b8;">
+                        <i class="fa fa-thumbs-up"></i><strong>{{ post.likes }}</strong>
+                    </div>
+                    <div style="color:#c3f584;">
+                        <i class="far fa-clock"></i> <strong>Fecha de publicación: {{ post.fechapublicacion|date }}</strong>
+                    </div>
+                </div>
+                <div class="p-2 bd-highlight">
+                    <div class="align-self-center">
+                        <img class="rounded" src="{{ asset('uploads/photos/'~post.foto) }}" width="150px">
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="text-justify my-3">
+                {{ post.contenido }}
+            </div>
+        </div>
+
+
+    </div>
+{% endblock %}
